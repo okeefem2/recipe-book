@@ -2,8 +2,12 @@ import { Injectable } from '@angular/core';
 import { Recipe } from '../model/recipe.model';
 import { Ingredient } from '../model/ingredient.model';
 import { ShoppingListService } from '../service/shopping-list.service';
+import { Subject } from 'rxjs/Subject';
+
 @Injectable()
 export class RecipeService {
+  // since we are returning slices, we need a way to listen for and emit changes
+  recipesChanged = new Subject<Recipe[]>();
 
   private recipes: Recipe[] = [
     new Recipe(
@@ -25,5 +29,20 @@ export class RecipeService {
 
   addIngredientsToShoppingList(ingredients: Ingredient[]) {
     this.shoppingListService.addIngredients(ingredients);
+  }
+
+  addRecipe(recipe: Recipe) {
+    this.recipes.push(recipe);
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  updateRecipe(index: number, updatedRecipe: Recipe) {
+    this.recipes[index] = updatedRecipe;
+    this.recipesChanged.next(this.recipes.slice());
+  }
+
+  deleteRecipe(index: number) {
+    this.recipes.splice(index, 1);
+    this.recipesChanged.next(this.recipes.slice());
   }
 }
