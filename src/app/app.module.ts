@@ -15,6 +15,7 @@ import { RecipesComponent } from './recipes/recipes.component';
 import { DropdownDirective } from './directives/dropdown/dropdown.directive';
 
 import { RecipeService } from './service/recipe.service';
+import { DataStorageService } from './service/data-storage.service';
 import { ShoppingListService } from './service/shopping-list.service';
 import { RecipeStartComponent } from './recipes/recipe-start/recipe-start.component';
 import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component';
@@ -40,7 +41,7 @@ import { RecipeEditComponent } from './recipes/recipe-edit/recipe-edit.component
     HttpModule,
     AppRoutingModule
   ],
-  providers: [RecipeService, ShoppingListService],
+  providers: [RecipeService, ShoppingListService, DataStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
