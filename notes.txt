@@ -1,3 +1,26 @@
 aot compilation!
 
 ng build --prod --aot
+
+deploying to amazon s3:
+
+create bucket
+
+bucket name: unique project name
+
+permissions:
+add bucket policy (check the examples)
+grant readonly permissions to anon user
+replace example bucket name with yours!
+
+static website hosting
+index document: index.html
+error document: index.html
+
+ng build --prod --aot
+-- side note ng build --prod --aot --base-href /path/to/angular/root/on/server/ if needed
+-- ^ can also set in index.html
+grab dist/*
+in s3 console:
+actions > upload > add files > dist/*
+properties > grab endpoint > load in URL *WABAM*
