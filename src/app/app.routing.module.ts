@@ -1,15 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import {HomeComponent} from './core/home/home.component';
+import {AuthGuardService} from './service/auth-guard.service';
 
-import { HeaderComponent } from './header/header.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { SigninComponent } from './auth/signin/signin.component';
-import { AuthGuardService } from './service/auth-guard.service';
 // dynamic params come after hard routes
+// loadChildren for lazy loading
 const appRoutes: Routes = [
-  {path: '', redirectTo:'/recipes', pathMatch: 'full' },
-  {path: 'signup', component: SignupComponent},
-  {path: 'signin', component: SigninComponent}
+  {path: '', component: HomeComponent },
+  {path: 'recipes', loadChildren: './recipes/recipe.module#RecipesModule', canLoad: [AuthGuardService] }
 ];
 
 @NgModule({
@@ -18,6 +16,9 @@ const appRoutes: Routes = [
   ],
   exports: [
     RouterModule
+  ],
+  providers: [
+      AuthGuardService
   ]
 })
 export class AppRoutingModule { }

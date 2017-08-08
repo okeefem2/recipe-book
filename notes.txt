@@ -1,0 +1,3 @@
+aot compilation!
+
+ng build --prod --aot

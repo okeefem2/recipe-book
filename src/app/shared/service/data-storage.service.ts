@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Http, Response } from '@angular/http';
-import { RecipeService } from './recipe.service';
-import { Recipe } from '../model/recipe.model';
-import { AuthService } from './auth.service';
+import { RecipeService } from '../../service/recipe.service';
+import { Recipe } from '../../recipes/model/recipe.model';
+import { AuthService } from '../../service/auth.service';
 import 'rxjs/add/operator/map';
 
 @Injectable()

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
-import { Ingredient } from '../../model/ingredient.model';
+import { Ingredient } from '../../shared/model/ingredient.model';
 import { ShoppingListService } from '../../service/shopping-list.service';
 import { NgForm } from '@angular/forms';
-import { Subscription } from 'rxjs';
+import { Subscription } from 'rxjs/subscription';
 @Component({
   selector: 'app-shopping-list-edit',
   templateUrl: './shopping-list-edit.component.html',

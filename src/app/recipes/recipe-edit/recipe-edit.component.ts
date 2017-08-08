@@ -22,7 +22,7 @@ export class RecipeEditComponent implements OnInit {
         // create form whenever route changes
         this.initForm();
       }
-    )
+    );
   }
   private initForm() {
     let recipeName = '';
@@ -84,7 +84,7 @@ export class RecipeEditComponent implements OnInit {
           Validators.pattern(/^[1-9]+[0-9]*$/)
         ])
       })
-    )
+    );
   }
 
   onCancel() {
@@ -93,5 +93,8 @@ export class RecipeEditComponent implements OnInit {
 
   onDeleteIngredient(index: number) {
     (<FormArray>this.recipeForm.get('ingredients')).removeAt(index);
+  }
+  getFormIngredientsControls() {
+    return (<FormArray> this.recipeForm.get('ingredients')).controls;
   }
 }
